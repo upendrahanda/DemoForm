@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Data</title>
+    <style>
+body {
+  font-family: apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: normal;
+  font-size: 100%;
+}
+
+.section {
+  padding: 1em;
+}
+.section h3 {
+  font-weight: 500;
+}
+
+.data-card {
+  float:left;
+  display: inline-block;
+  border-radius: 0.5em;
+  box-shadow: 0 1px 2.5em rgba(0, 0, 0, 0.1);
+  padding: 2.5em 1.5em 1.5em 1.5em;
+  background-color: #fff;
+  width: auto;
+  transition: 0.15s ease-out all;
+  border: 1px solid transparent;
+  cursor: default;
+  position: relative;
+  margin: 20px;
+}
+.data-card:not(:last-child) {
+  margin-right: 0.75em;
+}
+.data-card.is-hoverable {
+  cursor: pointer;
+}
+.data-card.is-hoverable:hover {
+  z-index: 1;
+  border-color: #f1f1f1;
+  transform: translateY(-7px);
+  box-shadow: 0 3px 2.5em rgba(0, 0, 0, 0.15);
+}
+
+.data-card__val {
+  font-weight: 200;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.data-card__label {
+  margin-bottom: 0.75em;
+  font-size: 14px;
+  font-weight: 500;
+  color: #777E86;
+}
+
+.data-card__color {
+  width: 20px;
+  height: 5px;
+  background-color: #e1e1e1;
+  border-radius: 1em;
+}
+.data-card__color.is-green {
+  background-color: #64DEAD;
+}
+.data-card__color.is-orange {
+  background-color: #EEBA89;
+}
+.data-card__color.is-red {
+  background-color: #EC5E66;
+}
+    </style>
+</head>
+<body>
+<div class='section'>
+{% for x in data %}
+  <div class='data-card'>
+    <div class='data-card__val'>
+      {{x.name}} | {{x.ph_no}}
+    </div>
+    <div class='data-card__label'>
+        {{x.get_currency_rx_display}}(Rx) | {{x.get_currency_tx_display}}(Tx)
+    </div>
+    <div class='data-card__color is-green'></div>
+  </div>
+{% endfor %}
+</div>
+
+</body>
+</html>
